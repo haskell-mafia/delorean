@@ -1,0 +1,38 @@
+name:                  delorean
+version:               0.0.1
+license:               AllRightsReserved
+author:                Mark Hibberd <mark@hibberd.id.au>
+maintainer:            Mark Hibberd <mark@hibberd.id.au>
+copyright:             (c) 2014 Mark Hibberd
+synopsis:              delorean
+category:              System
+cabal-version:         >= 1.8
+build-type:            Simple
+description:           delorean.
+
+library
+  build-depends:
+                       base                            >= 3          && < 5
+                     , text                            == 1.1.*
+                     , time                            == 1.4.*
+                     , tuple                           == 0.2.0.1
+                     , tz                              == 0.0.0.5
+                     , tzdata                          == 0.1.20140324.0
+
+  ghc-options:
+                       -Wall
+
+  hs-source-dirs:
+                       src
+
+
+  exposed-modules:
+                       Paths_delorean
+                       Delorean
+
+test-suite test
+  type:           exitcode-stdio-1.0
+  main-is:        test.hs
+  ghc-options:    -Wall -threaded -O2
+  hs-source-dirs: test
+  build-depends:  base, QuickCheck, delorean
