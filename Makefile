@@ -3,13 +3,19 @@ MAKEFLAGS = $(MFLAGS)
 SANDBOX = .cabal-sandbox
 CABAL_FLAGS =
 DEPS = .cabal-sandbox/.cairn
+P = p/p.cabal
 
 .PHONY: build test repl repl-test quick tags
 
 default: repl
 
-${SANDBOX}:
+${P}:
+	git submodule init
+	git submodule update
+
+${SANDBOX}: ${P}
 	cabal sandbox init
+	cabal sandbox add-source p
 
 ${DEPS}: ${SANDBOX} $(wildcard *.cabal)
 	cabal install -j --only-dependencies --enable-tests
