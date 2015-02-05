@@ -7,6 +7,4 @@ if find $HOME/.cabal/packages/hackage.haskell.org/00-index.cache -type f -mtime 
     cabal update
 fi
 
-make .cabal-sandbox/.cairn
-cabal configure --enable-tests
-cabal test --log=/dev/stdout
+make test
