@@ -1,3 +1,3 @@
-[submodule "p"]
-	path = p
+[submodule "lib/p"]
+	path = lib/p
 	url = git@github.com:ambiata/p.git
