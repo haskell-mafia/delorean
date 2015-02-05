@@ -13,7 +13,10 @@ description:           delorean.
 library
   build-depends:
                        base                            >= 3          && < 5
-                     , text                            == 1.1.*
+                     , attoparsec                      == 0.11.*
+                     , p
+                     , template-haskell
+                     , text                            == 1.2.*
                      , time                            == 1.4.*
                      , tz                              == 0.0.0.5
                      , tzdata                          == 0.1.20140324.0
@@ -28,10 +31,16 @@ library
   exposed-modules:
                        Paths_delorean
                        Delorean
+                       Delorean.Duration
+                       Delorean.Local
+                       Delorean.Local.Date
+                       Delorean.Local.Time
+                       Delorean.Local.DateTime
+                       Delorean.Local.QQ
 
 test-suite test
   type:           exitcode-stdio-1.0
   main-is:        test.hs
   ghc-options:    -Wall -threaded -O2
   hs-source-dirs: test
-  build-depends:  base, QuickCheck, delorean
+  build-depends:  base, QuickCheck, delorean, p, attoparsec, text
