@@ -1,0 +1,13 @@
+name:                  delorean-test
+version:               0.0.1
+cabal-version:         >= 1.8
+
+library
+  build-depends:
+                       base
+                     , p
+                     , delorean
+                     , QuickCheck
+
+  exposed-modules:
+                       Delorean.Arbitrary
