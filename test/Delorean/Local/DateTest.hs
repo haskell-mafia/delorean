@@ -37,6 +37,11 @@ prop_roundTripNextMonth m =
   (prevMonth . nextMonth) m == m &&
     (nextMonth . prevMonth) m == m
 
+prop_roundTripNextDay :: Date -> Bool
+prop_roundTripNextDay d =
+  (nextDay . prevDay) d == d &&
+    (prevDay . nextDay) d == d
+
 prop_toDayOfMonth :: Bool
 prop_toDayOfMonth =
   let match (y, m, w, d, e) = fromMaybe False $ do

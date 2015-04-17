@@ -29,6 +29,7 @@ module Delorean.Local.Date (
   , nextWeek
   , nextDayOfWeek
   , nextDay
+  , prevDay
   , toDayOfMonth
   , dateToGregorianDay
   , gregorianDayToDate
@@ -224,6 +225,10 @@ nextDayOfWeek dow x@(Date y m d) =
 nextDay :: Date -> Date
 nextDay =
   unsafeFromGregorian . toGregorian . addDays 1 . dateToGregorianDay
+
+prevDay :: Date -> Date
+prevDay =
+  unsafeFromGregorian . toGregorian . addDays (-1) . dateToGregorianDay
 
 dateToGregorianDay :: Date -> Day
 dateToGregorianDay (Date y m d) =
