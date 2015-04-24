@@ -1,5 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module Delorean.ParserCheck where
+module Test.Delorean.ParserCheck where
 
 import           Data.Attoparsec.Text
 import           Data.String (String)

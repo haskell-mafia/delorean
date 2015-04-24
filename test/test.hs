@@ -1,10 +1,10 @@
 import           Control.Monad
 
-import qualified Delorean.DurationTest
-import qualified Delorean.Local.DateTest
-import qualified Delorean.Local.TimeTest
-import qualified Delorean.Local.DateTimeTest
-import qualified Delorean.Local.QQTest
+import qualified Test.Delorean.Duration
+import qualified Test.Delorean.Local.Date
+import qualified Test.Delorean.Local.Time
+import qualified Test.Delorean.Local.DateTime
+import qualified Test.Delorean.Local.QQ
 
 import           System.Exit
 import           System.IO
@@ -13,9 +13,9 @@ import           System.IO
 main :: IO ()
 main =
   hSetBuffering stdout LineBuffering >> mapM id [
-      Delorean.DurationTest.tests
-    , Delorean.Local.DateTest.tests
-    , Delorean.Local.TimeTest.tests
-    , Delorean.Local.DateTimeTest.tests
-    , Delorean.Local.QQTest.tests
+      Test.Delorean.Duration.tests
+    , Test.Delorean.Local.Date.tests
+    , Test.Delorean.Local.Time.tests
+    , Test.Delorean.Local.DateTime.tests
+    , Test.Delorean.Local.QQ.tests
     ] >>= \rs -> when (not . all id $ rs) exitFailure

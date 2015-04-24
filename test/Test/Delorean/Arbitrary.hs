@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-module Delorean.Arbitrary where
+module Test.Delorean.Arbitrary where
 
 import           Delorean.Duration
 import           Delorean.Local.Date

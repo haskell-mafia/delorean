@@ -1,15 +1,15 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell #-}
-module Delorean.Local.DateTest where
+module Test.Delorean.Local.Date where
 
-import           Delorean.Arbitrary ()
 import           Delorean.Local
-import           Delorean.ParserCheck
 
 import           P
 
 import           System.IO
 
+import           Test.Delorean.Arbitrary ()
+import           Test.Delorean.ParserCheck
 import           Test.QuickCheck
 
 prop_roundTripYear :: Year -> Property

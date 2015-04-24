@@ -1,15 +1,15 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Delorean.Local.QQTest where
+module Test.Delorean.Local.QQ where
 
-import           Delorean.Arbitrary ()
 import           Delorean.Local
 
 import           P
 
 import           System.IO
 
+import           Test.Delorean.Arbitrary ()
 import           Test.QuickCheck
 
 {-  COMPILATION TESTS -}

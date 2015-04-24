@@ -1,8 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell #-}
-module Delorean.DurationTest where
+module Test.Delorean.Duration where
 
-import           Delorean.Arbitrary ()
 import           Delorean.Duration
 import           Delorean.ParserCheck
 
@@ -10,6 +9,7 @@ import           P
 
 import           System.IO
 
+import           Test.Delorean.Arbitrary ()
 import           Test.QuickCheck
 
 prop_consistency :: Int -> Property

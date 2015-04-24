@@ -1,17 +1,17 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell #-}
-module Delorean.Local.DateTimeTest where
+module Test.Delorean.Local.DateTime where
 
-import           Delorean.Arbitrary ()
 import           Delorean.Local.Date
 import           Delorean.Local.Time
 import           Delorean.Local.DateTime
-import           Delorean.ParserCheck
 
 import           P
 
 import           System.IO
 
+import           Test.Delorean.Arbitrary ()
+import           Test.Delorean.ParserCheck
 import           Test.QuickCheck
 
 prop_dateTimeIsAlias :: Date -> Time -> Property

@@ -1,15 +1,15 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell #-}
-module Delorean.Local.TimeTest where
+module Test.Delorean.Local.Time where
 
-import           Delorean.Arbitrary ()
 import           Delorean.Local.Time
-import           Delorean.ParserCheck
 
 import           P
 
 import           System.IO
 
+import           Test.Delorean.Arbitrary ()
+import           Test.Delorean.ParserCheck
 import           Test.QuickCheck
 
 prop_roundTripHourOfDay :: HourOfDay -> Property
