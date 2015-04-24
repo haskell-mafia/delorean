@@ -3,13 +3,13 @@
 module Test.Delorean.Duration where
 
 import           Delorean.Duration
-import           Delorean.ParserCheck
 
 import           P
 
 import           System.IO
 
 import           Test.Delorean.Arbitrary ()
+import           Test.Delorean.ParserCheck
 import           Test.QuickCheck
 
 prop_consistency :: Int -> Property
