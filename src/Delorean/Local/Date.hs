@@ -44,6 +44,9 @@ module Delorean.Local.Date (
   , dayOfWeekParser
   , weekOfMonthParser
   , dayOfMonthParser
+  , dayOfMonthParser'
+  , monthParser
+  , yearParser
   , dateParser
   ) where
 
@@ -290,20 +293,28 @@ weekOfMonthParser =
 
 dayOfMonthParser :: Parser DayOfMonth
 dayOfMonthParser =
-  DayOfMonth <$> (decimal :: Parser Int)
+  decimal >>= (\m -> maybe (fail $ "Not a valid day [" <> show m <> "].") pure . dayOfMonthFromInt $ m)
+
+dayOfMonthParser' :: Parser DayOfMonth
+dayOfMonthParser' =
+  replicateM 2 digit >>= (\m -> maybe (fail $ "Not a valid day [" <> m <> "].") pure . (>>= dayOfMonthFromInt) . readMaybe $ m)
+
+monthParser :: Parser Month
+monthParser =
+  replicateM 2 digit >>= (\m -> maybe (fail $ "Not a valid month [" <> m <> "].") pure . (>>= monthFromInt) . readMaybe $ m)
+
+yearParser :: Parser Year
+yearParser =
+  replicateM 4 digit >>= (\y -> maybe (fail $ "Not a valid year [" <> y <> "].") pure . (>>= yearFromInt) . readMaybe $ y)
 
 dateParser :: Parser Date
 dateParser = do
-  y <- replicateM 4 digit
+  y <- yearParser
   _ <- char '-'
-  m <- replicateM 2 digit
+  m <- monthParser
   _ <- char '-'
-  d <- replicateM 2 digit
-  maybe (fail $ "Invalid date values [" <> y <> "-" <>  m <> "-" <> d <> "].") pure $ do
-    y' <- readMaybe y >>= yearFromInt
-    m' <- readMaybe m >>= monthFromInt
-    d' <- readMaybe d >>= dayOfMonthFromInt
-    pure $ Date y' m' d'
+  d <- dayOfMonthParser'
+  pure $ Date y m d
 
 unsafeFromGregorian :: (Integer, Int, Int) -> Date
 unsafeFromGregorian (y, m, d) =
