@@ -1,6 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-warn-missing-signatures #-}
 module Test.Delorean.Local.Date where
 
 import           Data.Text (Text, pack)
@@ -15,7 +16,6 @@ import           Test.Delorean.Arbitrary ()
 import           Test.Delorean.ParserCheck
 import           Test.QuickCheck
 import           Text.Printf
-
 
 prop_roundTripYear :: Year -> Property
 prop_roundTripYear y =
@@ -107,6 +107,17 @@ prop_symmetricMonth =
 prop_symmetricDay :: DayOfMonth -> Property
 prop_symmetricDay =
   symmetric dayOfMonthParser' (p 2 . dayOfMonthToInt)
+
+prop_symmetricPlusDaysMinusDays n date =
+  conjoin [
+      minusDays n (plusDays n date) === date
+    , plusDays n (minusDays n date) === date]
+
+prop_nextDayPlusDays1 date =
+  nextDay date === plusDays 1 date
+
+prop_prevDayMinusDays1 date =
+  prevDay date === minusDays 1 date
 
 p :: Int -> Int -> Text
 p n a =

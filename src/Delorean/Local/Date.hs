@@ -30,6 +30,8 @@ module Delorean.Local.Date (
   , nextDayOfWeek
   , nextDay
   , prevDay
+  , plusDays
+  , minusDays
   , toDayOfMonth
   , dateToGregorianDay
   , gregorianDayToDate
@@ -52,7 +54,7 @@ module Delorean.Local.Date (
 
 import           Data.Attoparsec.Text
 import           Data.Data (Data)
-import           Data.List (replicate, zip)
+import           Data.List (zip)
 import           Data.String (String)
 import           Data.Text (Text)
 import qualified Data.Text as T
@@ -217,8 +219,7 @@ prevMonthOn dom d =
    in gregorianDayToDate . dateToGregorianDay $ Date y m dom
 
 nextWeek :: Date -> Date
-nextWeek date' =
-  foldr ($) date' (replicate 7 nextDay)
+nextWeek = plusDays 7
 
 nextDayOfWeek :: DayOfWeek -> Date -> Date
 nextDayOfWeek dow x@(Date y m d) =
@@ -226,12 +227,17 @@ nextDayOfWeek dow x@(Date y m d) =
    in if (dayOfWeekFromInt current) == Just dow then x else nextDayOfWeek dow (nextDay x)
 
 nextDay :: Date -> Date
-nextDay =
-  unsafeFromGregorian . toGregorian . addDays 1 . dateToGregorianDay
+nextDay = plusDays 1
+
+plusDays :: Integer -> Date -> Date
+plusDays n =
+  unsafeFromGregorian . toGregorian . addDays n . dateToGregorianDay
+
+minusDays :: Integer -> Date -> Date
+minusDays n = plusDays (-n)
 
 prevDay :: Date -> Date
-prevDay =
-  unsafeFromGregorian . toGregorian . addDays (-1) . dateToGregorianDay
+prevDay = minusDays 1
 
 dateToGregorianDay :: Date -> Day
 dateToGregorianDay (Date y m d) =
