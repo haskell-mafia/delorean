@@ -52,6 +52,8 @@ module Delorean.Local.Date (
   , dateParser
   ) where
 
+import           Control.Exception
+
 import           Data.Attoparsec.Text
 import           Data.Data (Data)
 import           Data.List (zip)
@@ -63,8 +65,6 @@ import           Data.Time.Calendar.OrdinalDate
 import           Data.Typeable (Typeable)
 
 import           P
-import qualified Prelude as P
-
 import           Prelude (Enum (succ, pred), Bounded (..))
 
 import           Text.Printf
@@ -324,7 +324,7 @@ dateParser = do
 
 unsafeFromGregorian :: (Integer, Int, Int) -> Date
 unsafeFromGregorian (y, m, d) =
-  let failure t v = P.error $ "Invariant violated: not a valid gregorian triple, invalid " <> t <> " [" <> show v <> "]."
+  let failure t v = throw $ AssertionFailed ("Invariant violated: not a valid gregorian triple, invalid " <> t <> " [" <> show v <> "].")
       y' = fromMaybe (failure "year" y) $ (yearFromInt . fromInteger) y
       m' = fromMaybe (failure "month" m) $ monthFromInt m
       d' = fromMaybe (failure "day" d) $ dayOfMonthFromInt d
