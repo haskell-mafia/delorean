@@ -10,4 +10,4 @@ cabal-dev
 cabal.sandbox.config
 /tmp
 .idea
-
+.stack-work

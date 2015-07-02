@@ -1,0 +1,16 @@
+flags: {}
+packages:
+- '.'
+- test/
+- location:
+    git: git@github.com:ambiata/p
+    commit: dce0b9c9f29590f37d47c7d7794ec955be591f8e
+- location:
+    git: git@github.com:ambiata/x
+    commit: 544a6f234dc371e5ac90ac23144714f773210e73
+  subdirs:
+    - x-templatehaskell/
+extra-deps:
+  - tz-0.0.0.10
+  - tzdata-0.1.20150129.1
+resolver: lts-2.16
