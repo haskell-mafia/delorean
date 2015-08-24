@@ -1,4 +1,4 @@
-name:                  delorean
+name:                  ambiata-delorean
 version:               0.0.1
 license:               AllRightsReserved
 author:                Ambiata <info@ambiata.com>
@@ -13,9 +13,9 @@ description:           delorean.
 library
   build-depends:
                        base                            >= 3          && < 5
+                     , ambiata-p
+                     , ambiata-x-templatehaskell
                      , attoparsec                      >= 0.11       && < 0.14
-                     , p
-                     , x-templatehaskell
                      , template-haskell
                      , text                            == 1.2.*
                      , time                            == 1.4.*
@@ -44,4 +44,4 @@ test-suite test
   main-is:        test.hs
   ghc-options:    -Wall -threaded -O2
   hs-source-dirs: test
-  build-depends:  base, QuickCheck, delorean, p, attoparsec, text
+  build-depends:  base, QuickCheck, ambiata-delorean, ambiata-p, attoparsec, text
