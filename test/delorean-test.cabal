@@ -1,4 +1,4 @@
-name:                  delorean-test
+name:                  ambiata-delorean-test
 version:               0.0.1
 cabal-version:         >= 1.8
 build-type:            Simple
@@ -6,8 +6,8 @@ build-type:            Simple
 library
   build-depends:
                        base
-                     , p
-                     , delorean
+                     , ambiata-p
+                     , ambiata-delorean
                      , QuickCheck
 
   exposed-modules:
