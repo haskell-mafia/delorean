@@ -42,6 +42,33 @@ prop_qdatetime =
 --  , [qdatetime|2011-03-28x23:59:00|]
     ]
 
+prop_qhod :: Bool
+prop_qhod =
+  all (const True) $ [
+      [qhod|0|]
+    , [qhod|23|]
+    , [qhod|23|]
+--    , [qhod|24|]
+    ]
+
+prop_qmoh :: Bool
+prop_qmoh =
+  all (const True) $ [
+      [qmoh|0|]
+    , [qmoh|23|]
+    , [qmoh|59|]
+--    , [qmoh|60|]
+    ]
+
+prop_qsom :: Bool
+prop_qsom =
+  all (const True) $ [
+      [qsom|0|]
+    , [qsom|23|]
+    , [qsom|59|]
+--    , [qsom|60|]
+    ]
+
 return []
 tests :: IO Bool
 tests = $quickCheckAll
