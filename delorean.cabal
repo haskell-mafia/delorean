@@ -20,7 +20,7 @@ library
                      , template-haskell
                      , text                            == 1.2.*
                      , time                            == 1.4.*
-                     , tz                              == 0.0.0.*
+                     , tz                              <  0.1.1
                      , tzdata                          == 0.1.*
 
   ghc-options:
