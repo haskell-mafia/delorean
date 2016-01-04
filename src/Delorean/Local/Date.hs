@@ -123,6 +123,7 @@ yearToInt :: Year -> Int
 yearToInt =
   unYear
 
+-- | Parses a valid year for the Gregorian calendar, i.e., in or after 1600.
 yearFromInt :: Int -> Maybe Year
 yearFromInt n =
   valueOrEmpty (n >= 1600) $ Year n
