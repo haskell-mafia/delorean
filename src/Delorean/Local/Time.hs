@@ -54,9 +54,9 @@ newtype SecondOfMinute =
 
 data Time =
   Time {
-    timeHour :: HourOfDay
-  , timeMinute :: MinuteOfHour
-  , timeSecond :: SecondOfMinute
+    timeHour :: !HourOfDay
+  , timeMinute :: !MinuteOfHour
+  , timeSecond :: !SecondOfMinute
   } deriving (Eq, Show, Ord, Typeable, Data)
 
 hourOfDayFromInt :: Int -> Maybe HourOfDay

@@ -115,9 +115,9 @@ data WeekOfMonth =
 
 data Date =
   Date {
-    dateYear :: Year
-  , dateMonth :: Month
-  , dateDay :: DayOfMonth
+    dateYear :: !Year
+  , dateMonth :: !Month
+  , dateDay :: !DayOfMonth
   } deriving (Eq, Show, Ord, Typeable, Data)
 
 yearToInt :: Year -> Int

@@ -35,8 +35,8 @@ import           System.IO
 
 data DateTime =
   DateTime {
-    getDate :: Date
-  , getTime :: Time
+    getDate :: !Date
+  , getTime :: !Time
   } deriving (Eq, Show, Ord, Typeable, Data)
 
 dateTime :: Year -> Month -> DayOfMonth -> HourOfDay -> MinuteOfHour -> SecondOfMinute -> DateTime
