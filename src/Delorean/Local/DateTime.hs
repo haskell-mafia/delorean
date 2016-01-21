@@ -37,7 +37,7 @@ data DateTime =
   DateTime {
     getDate :: !Date
   , getTime :: !Time
-  } deriving (Eq, Show, Ord, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Typeable, Data)
 
 dateTime :: Year -> Month -> DayOfMonth -> HourOfDay -> MinuteOfHour -> SecondOfMinute -> DateTime
 dateTime y m dom hod moh som =
