@@ -35,8 +35,6 @@ import           Data.Typeable (Typeable)
 
 import           P
 
-import           Prelude (Enum (..), Bounded (..))
-
 import           Text.Printf
 
 newtype HourOfDay =

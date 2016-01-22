@@ -52,22 +52,23 @@ module Delorean.Local.Date (
   , dateParser
   ) where
 
-import           Control.Exception
+import           Control.Exception (AssertionFailed(..), throw)
 
-import           Data.Attoparsec.Text
+import           Data.Attoparsec.Text (Parser, parseOnly)
+import           Data.Attoparsec.Text (choice, char, digit, string, decimal)
 import           Data.Data (Data)
 import           Data.List (zip)
 import           Data.String (String)
 import           Data.Text (Text)
 import qualified Data.Text as T
-import           Data.Time hiding (midnight, parseTime)
-import           Data.Time.Calendar.OrdinalDate
+import           Data.Time (Day(..), fromGregorian, toGregorian, addDays)
+import           Data.Time.Calendar.OrdinalDate (sundayStartWeek)
 import           Data.Typeable (Typeable)
 
 import           P
-import           Prelude (Enum (succ, pred), Bounded (..))
+import           Prelude (Enum (succ, pred))
 
-import           Text.Printf
+import           Text.Printf (printf)
 
 newtype Year =
   Year {
