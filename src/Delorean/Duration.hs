@@ -1,6 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# OPTIONS_GHC -funbox-strict-fields #-}
 module Delorean.Duration (
     Duration (..)
   , durationToSeconds
@@ -19,9 +20,9 @@ import           Data.Typeable (Typeable)
 import           P
 
 data Duration =
-    Seconds Int
-  | Minutes Int
-  | Hours Int
+    Seconds !Int
+  | Minutes !Int
+  | Hours !Int
   deriving (Read, Show, Typeable, Data)
 
 instance Eq Duration where

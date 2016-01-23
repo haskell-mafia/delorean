@@ -1,6 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# OPTIONS_GHC -funbox-strict-fields #-}
 module Delorean.Local.DateTime (
     DateTime (..)
   , dateTime

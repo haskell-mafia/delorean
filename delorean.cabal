@@ -24,7 +24,7 @@ library
                      , tzdata                          == 0.1.*
 
   ghc-options:
-                       -Wall -funbox-strict-fields
+                       -Wall
 
   hs-source-dirs:
                        src
