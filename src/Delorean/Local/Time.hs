@@ -40,24 +40,24 @@ import           Text.Printf
 newtype HourOfDay =
   HourOfDay {
     unHourOfDay :: Int
-  } deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 newtype MinuteOfHour =
   MinuteOfHour {
     unMinuteOfHour :: Int
-  } deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 newtype SecondOfMinute =
   SecondOfMinute {
     unSecondOfMinute :: Int
-  } deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 data Time =
   Time {
     timeHour :: !HourOfDay
   , timeMinute :: !MinuteOfHour
   , timeSecond :: !SecondOfMinute
-  } deriving (Eq, Show, Ord, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Typeable, Data)
 
 hourOfDayFromInt :: Int -> Maybe HourOfDay
 hourOfDayFromInt n =

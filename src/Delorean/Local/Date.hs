@@ -73,7 +73,7 @@ import           Text.Printf (printf)
 newtype Year =
   Year {
     unYear :: Int
-  } deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 data Month =
     January
@@ -88,12 +88,12 @@ data Month =
   | October
   | November
   | December
-  deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 newtype DayOfMonth =
   DayOfMonth {
     unDayOfMonth :: Int
-  } deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 data DayOfWeek =
     Sunday
@@ -103,7 +103,7 @@ data DayOfWeek =
   | Thursday
   | Friday
   | Saturday
-  deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 data WeekOfMonth =
     FirstWeek
@@ -111,14 +111,14 @@ data WeekOfMonth =
   | ThirdWeek
   | FourthWeek
   | LastWeek
-  deriving (Eq, Show, Ord, Enum, Bounded, Typeable, Data)
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
 
 data Date =
   Date {
     dateYear :: !Year
   , dateMonth :: !Month
   , dateDay :: !DayOfMonth
-  } deriving (Eq, Show, Ord, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Typeable, Data)
 
 yearToInt :: Year -> Int
 yearToInt =

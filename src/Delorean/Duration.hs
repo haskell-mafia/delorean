@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 module Delorean.Duration (
@@ -9,9 +10,11 @@ module Delorean.Duration (
   ) where
 
 import           Data.Attoparsec.Text
+import           Data.Data (Data)
+import           Data.String (String)
 import           Data.Text (Text)
 import qualified Data.Text as T
-import           Data.String (String)
+import           Data.Typeable (Typeable)
 
 import           P
 
@@ -19,7 +22,7 @@ data Duration =
     Seconds Int
   | Minutes Int
   | Hours Int
-  deriving (Show)
+  deriving (Read, Show, Typeable, Data)
 
 instance Eq Duration where
   (==) = on (==) durationToSeconds
