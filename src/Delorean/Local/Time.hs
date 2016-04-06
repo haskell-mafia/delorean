@@ -2,6 +2,7 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# OPTIONS_GHC -funbox-strict-fields #-}
 module Delorean.Local.Time (
     HourOfDay
@@ -34,6 +35,8 @@ import qualified Data.Text as T
 import           Data.Time hiding (midnight, parseTime, timeOfDayToTime)
 import           Data.Typeable (Typeable)
 
+import           GHC.Generics (Generic)
+
 import           P
 
 import           Text.Printf
@@ -41,24 +44,32 @@ import           Text.Printf
 newtype HourOfDay =
   HourOfDay {
     unHourOfDay :: Int
-  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData HourOfDay
 
 newtype MinuteOfHour =
   MinuteOfHour {
     unMinuteOfHour :: Int
-  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData MinuteOfHour
 
 newtype SecondOfMinute =
   SecondOfMinute {
     unSecondOfMinute :: Int
-  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData SecondOfMinute
 
 data Time =
   Time {
     timeHour :: !HourOfDay
   , timeMinute :: !MinuteOfHour
   , timeSecond :: !SecondOfMinute
-  } deriving (Eq, Ord, Read, Show, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Typeable, Data, Generic)
+
+instance NFData Time
 
 hourOfDayFromInt :: Int -> Maybe HourOfDay
 hourOfDayFromInt n =

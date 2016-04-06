@@ -2,6 +2,7 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# OPTIONS_GHC -funbox-strict-fields #-}
 module Delorean.Local.Date (
     Year
@@ -66,6 +67,8 @@ import           Data.Time (Day(..), fromGregorian, toGregorian, addDays)
 import           Data.Time.Calendar.OrdinalDate (sundayStartWeek)
 import           Data.Typeable (Typeable)
 
+import           GHC.Generics (Generic)
+
 import           P
 import           Prelude (Enum (succ, pred))
 
@@ -74,7 +77,9 @@ import           Text.Printf (printf)
 newtype Year =
   Year {
     unYear :: Int
-  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData Year
 
 data Month =
     January
@@ -89,12 +94,16 @@ data Month =
   | October
   | November
   | December
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData Month
 
 newtype DayOfMonth =
   DayOfMonth {
     unDayOfMonth :: Int
-  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData DayOfMonth
 
 data DayOfWeek =
     Sunday
@@ -104,7 +113,9 @@ data DayOfWeek =
   | Thursday
   | Friday
   | Saturday
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData DayOfWeek
 
 data WeekOfMonth =
     FirstWeek
@@ -112,14 +123,18 @@ data WeekOfMonth =
   | ThirdWeek
   | FourthWeek
   | LastWeek
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data)
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable, Data, Generic)
+
+instance NFData WeekOfMonth
 
 data Date =
   Date {
     dateYear :: !Year
   , dateMonth :: !Month
   , dateDay :: !DayOfMonth
-  } deriving (Eq, Ord, Read, Show, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Typeable, Data, Generic)
+
+instance NFData Date
 
 yearToInt :: Year -> Int
 yearToInt =
