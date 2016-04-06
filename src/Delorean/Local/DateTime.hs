@@ -1,6 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# OPTIONS_GHC -funbox-strict-fields #-}
 module Delorean.Local.DateTime (
     DateTime (..)
@@ -28,6 +29,8 @@ import           Data.Text (Text)
 import           Delorean.Local.Date
 import           Delorean.Local.Time
 
+import           GHC.Generics (Generic)
+
 import           P
 
 import           Prelude (Enum (..))
@@ -38,7 +41,9 @@ data DateTime =
   DateTime {
     getDate :: !Date
   , getTime :: !Time
-  } deriving (Eq, Ord, Read, Show, Typeable, Data)
+  } deriving (Eq, Ord, Read, Show, Typeable, Data, Generic)
+
+instance NFData DateTime
 
 dateTime :: Year -> Month -> DayOfMonth -> HourOfDay -> MinuteOfHour -> SecondOfMinute -> DateTime
 dateTime y m dom hod moh som =
