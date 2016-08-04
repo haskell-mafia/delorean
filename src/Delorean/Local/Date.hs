@@ -21,6 +21,7 @@ module Delorean.Local.Date (
   , dayOfMonthFromInt
   , dayOfWeekToInt
   , dayOfWeekFromInt
+  , currentDayOfWeekToInt
   , nextYear
   , nextMonth
   , nextMonthAt
@@ -239,10 +240,14 @@ prevMonthOn dom d =
 nextWeek :: Date -> Date
 nextWeek = plusDays 7
 
+currentDayOfWeekToInt :: Date -> Int
+currentDayOfWeekToInt =
+  snd . sundayStartWeek . dateToGregorianDay
+
 nextDayOfWeek :: DayOfWeek -> Date -> Date
-nextDayOfWeek dow x@(Date y m d) =
-  let current = snd . sundayStartWeek . dateToGregorianDay $ Date y m d
-   in if (dayOfWeekFromInt current) == Just dow then x else nextDayOfWeek dow (nextDay x)
+nextDayOfWeek dow x =
+  let current = dayOfWeekFromInt $ currentDayOfWeekToInt x
+   in if current == Just dow then x else nextDayOfWeek dow (nextDay x)
 
 nextDay :: Date -> Date
 nextDay = plusDays 1
