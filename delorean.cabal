@@ -19,8 +19,8 @@ library
                      , attoparsec                      >= 0.11       && < 0.14
                      , template-haskell
                      , text                            == 1.2.*
-                     , time                            >= 1.4        && < 1.6
-                     , tz                              <  0.1.1
+                     , time                            >= 1.4        && < 1.7
+                     , tz                              >=  0.0       && < 0.2
                      , tzdata                          == 0.1.*
 
   ghc-options:
