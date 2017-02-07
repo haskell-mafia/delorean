@@ -8,6 +8,7 @@ module Delorean.Local.QQ (
   , qhod
   , qmoh
   , qsom
+  , qdom
   ) where
 
 import qualified Data.Text as T
@@ -40,3 +41,6 @@ qmoh = qmaybe (\s -> readMaybe (T.unpack s) >>= minuteOfHourFromInt)
 
 qsom :: QuasiQuoter
 qsom = qmaybe (\s -> readMaybe (T.unpack s) >>= secondOfMinuteFromInt)
+
+qdom :: QuasiQuoter
+qdom = qmaybe (\s -> readMaybe (T.unpack s) >>= dayOfMonthFromInt)

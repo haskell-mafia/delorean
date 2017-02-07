@@ -69,6 +69,15 @@ prop_qsom =
 --    , [qsom|60|]
     ]
 
+prop_qdom :: Bool
+prop_qdom =
+  all (const True) $ [
+      [qdom|1|]
+    , [qdom|15|]
+    , [qdom|30|]
+    , [qdom|31|]
+    ]
+
 return []
 tests :: IO Bool
 tests = $quickCheckAll
