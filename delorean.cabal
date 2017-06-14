@@ -31,7 +31,6 @@ library
 
 
   exposed-modules:
-                       Paths_ambiata_delorean
                        Delorean
                        Delorean.Duration
                        Delorean.Local
